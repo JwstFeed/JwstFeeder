@@ -39,8 +39,8 @@ internal class RedditMapper : IMapper
         {
             SourceUrl = $"{GeneralUtils.GetAppSettings("RedditUrl")}{i.Permalink}",
             DatePublished = i.DateCreated.FromUnixTime(),
-            SourceType = eSourceType.Reddit,
             ClusterIndex = getClusterIndex(i),
+            SourceType = eSourceType.Reddit,            
             PlotType = getPlotType(i),
             PlotUrl = getPlotUrl(i),
             ThumbnailUrl = i.URL,
