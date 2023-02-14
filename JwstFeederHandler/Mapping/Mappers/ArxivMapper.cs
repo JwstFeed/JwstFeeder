@@ -33,10 +33,10 @@ internal class ArxivMapper : IMapper
             DatePublished = getPublishDate(e),
             ClusterIndex = getClusterIndex(e),
             SourceType = eSourceType.Arxiv,
-            SourceUrl = getArticleUrl(e),
-            UniqueID = getUniqueID(e),
-            PlotUrl = getArticleUrl(e),
-            PlotType = ePlotType.Link
+            SourceUrl = getArticleUrl(e),            
+            PlotUrl = getArticleUrl(e),            
+            PlotType = ePlotType.Link,
+            UniqueID = getUniqueID(e)
         });
     #endregion
 
