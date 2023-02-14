@@ -9,10 +9,10 @@ internal abstract class BaseRawStsciRawMapper : IMapper
 {
     #region Data Members
     protected IDictionary<string, int> indexKeys { get; }
-    protected string[] irrelevantImageNameWords { get; }
-    protected string[] testImageWords { get; }
+    protected string[] irrelevantImageNameWords { get; }    
     protected string[] irrelevantFilters { get; }
     protected string[] irrelevantNrcas { get; }
+    protected string[] testImageWords { get; }
     protected Stream stream { get; set; }
     #endregion
 
