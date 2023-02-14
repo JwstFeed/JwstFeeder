@@ -6,6 +6,12 @@ internal class RedditItemModel
 {
     [JsonProperty(PropertyName = "data")]
     public RedditItemDetails Data { get; set; }
+    
+    public IEnumerable<RedditItemDetails> GetItems()
+        =>
+        Data
+        .Items
+        .Select(i => i.Data);
 }
 
 internal class RedditItem
