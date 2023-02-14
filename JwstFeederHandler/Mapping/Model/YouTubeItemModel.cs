@@ -6,6 +6,8 @@ public class YouTubeItemModel
 {
     [JsonProperty(PropertyName = "items")]
     public List<YouTubeItem> Items { get; set; }
+    
+    public IEnumerable<YouTubeItem> GetVideos() => Items;
 }
 
 public class YouTubeItem
