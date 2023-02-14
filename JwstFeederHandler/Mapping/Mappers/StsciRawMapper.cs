@@ -18,12 +18,12 @@ internal class StsciRawMapper : BaseRawStsciRawMapper
         .Select(i => new FeedItem()
         {
             DatePublished = getReleasedDate(i),
-            ThumbnailUrl = getMqImagePath(i),
             ClusterIndex = getClusterIndex(i),
+            ThumbnailUrl = getMqImagePath(i),            
             SourceType = getSourceType(i),
-            PlotUrl = getMqImagePath(i),
-            PlotType = ePlotType.Image,
             ShortTitle = getShortTitle(i),
+            PlotUrl = getMqImagePath(i),
+            PlotType = ePlotType.Image,            
             UniqueID = getUniqueID(i),
             SourceUrl = "#"
         });
