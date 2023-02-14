@@ -29,9 +29,9 @@ internal class FlickrMapper : IMapper
         .Elements("photo")
         .Where(isJwstRelevant)
         .Select(e => new FeedItem()
-        {
-            ThumbnailUrl = getMediumImageUrl(e),
+        {            
             ShortTitle = e.Attribute("title").Value,
+            ThumbnailUrl = getMediumImageUrl(e),
             ClusterIndex = getClusterIndex(e),
             SourceType = eSourceType.Flickr,
             SourceUrl = getSourceUrl(e),
