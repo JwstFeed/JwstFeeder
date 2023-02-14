@@ -31,8 +31,8 @@ internal class YouTubeMapper : IMapper
         {
             SourceUrl = getVideoEmbedUrl(v).Replace("embed/", "watch?v="),
             DatePublished = getDatePublished(v),
-            SourceType = eSourceType.Youtube,
             ClusterIndex = getClusterIndex(v),
+            SourceType = eSourceType.Youtube,            
             PlotUrl = getVideoEmbedUrl(v),
             PlotType = ePlotType.Video,
             UniqueID = getUniqueID(v),
