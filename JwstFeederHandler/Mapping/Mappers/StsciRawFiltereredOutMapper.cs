@@ -17,13 +17,13 @@ internal class StsciRawFiltereredOutMapper : StsciRawMapper
         .Where(isRelevantImage)
         .Select(i => new FeedItem()
         {
-            DatePublished = getReleasedDate(i),
-            ThumbnailUrl = getMqImagePath(i),
+            DatePublished = getReleasedDate(i),                       
             ClusterIndex = getClusterIndex(i),
+            ThumbnailUrl = getMqImagePath(i),
             SourceType = getSourceType(i),
+            ShortTitle = getShortTitle(i),            
             PlotUrl = getMqImagePath(i),
-            PlotType = ePlotType.Image,
-            ShortTitle = getShortTitle(i),
+            PlotType = ePlotType.Image,            
             UniqueID = getUniqueID(i),
             SourceUrl = "#"
         });
