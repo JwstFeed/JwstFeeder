@@ -6,6 +6,13 @@ public class StsciItemModel
 {
     [JsonProperty(PropertyName = "data")]
     public StsciItem Data { get; set; }
+    
+    public List<List<object>> GetRows()
+        =>
+        Data
+        .Tables
+        .FirstOrDefault()
+        .Rows;
 }
 
 public class StsciItem
