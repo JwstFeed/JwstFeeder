@@ -48,10 +48,10 @@ internal class TwitterMapper : IMapper
             {
                 DatePublished = getDatePublished(t),
                 ClusterIndex = getClusterIndex(t),
-                SourceType = getSourceType(),
-                ThumbnailUrl = getPlotUrl(t),
-                SourceUrl = getSourceUrl(t),
                 ShortTitle = getShortTitle(t),
+                ThumbnailUrl = getPlotUrl(t),
+                SourceType = getSourceType(),                
+                SourceUrl = getSourceUrl(t),                
                 PlotType = getPlotType(t),
                 PlotUrl = getPlotUrl(t),
                 UniqueID = t.Id
