@@ -41,8 +41,8 @@ internal class StsciScheduleMapper : IMapper
                 SourceType = eSourceType.StsciSchedule,
                 ClusterIndex = getClusterIndex(d),
                 DatePublished = getStartDate(d),
-                UniqueID = getUniqueID(d),
                 SourceUrl = getPlotUrl(d),
+                UniqueID = getUniqueID(d),                
                 PlotType = ePlotType.Link,
                 ShortTitle = getTitle(d),
                 PlotUrl = getPlotUrl(d)
