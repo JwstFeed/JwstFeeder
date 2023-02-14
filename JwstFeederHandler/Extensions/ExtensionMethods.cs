@@ -6,29 +6,6 @@ namespace JwstFeederHandler.Extensions;
 
 internal static class ExtensionMethods
 {
-    public static IEnumerable<RedditItemDetails> GetItems(this RedditItemModel source)
-    {
-        return source
-            .Data
-            .Items
-            .Select(i => i.Data);
-    }
-
-    public static List<List<object>> GetRows(this StsciItemModel source)
-    {
-        return source
-            .Data
-            .Tables
-            .FirstOrDefault()
-            .Rows;
-    }
-
-    public static IEnumerable<YouTubeItem> GetVideos(this YouTubeItemModel source)
-    {
-        return source
-            .Items;
-    }
-
     public static string CleanHTML(this string source)
     {
         return source
