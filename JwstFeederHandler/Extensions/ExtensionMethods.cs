@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using JwstFeederHandler.Mapping.Model;
 using JwstFeedInfrastructure.Model;
 
 namespace JwstFeederHandler.Extensions;
