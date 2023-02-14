@@ -154,15 +154,12 @@ internal abstract class BaseRawStsciRawMapper : IMapper
         =>
         obj[indexKeys["StartTime"]]
         .ToAbsString()
-        .GetContentBeforeFirstAppearanceOf('.')
         .FromMjdTime();
 
     protected DateTime getReleasedDate(List<object> obj)
         =>
         obj[indexKeys["ReleaseDate"]]
         .ToAbsString()
-        .GetContentBeforeFirstAppearanceOf('.')
-        .FromMjdTime()
-        .AddArtificialHoursAndMinutes();
+        .FromMjdTime();
     #endregion
 }
