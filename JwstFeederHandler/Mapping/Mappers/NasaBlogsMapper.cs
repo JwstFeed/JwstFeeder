@@ -36,9 +36,9 @@ internal class NasaBlogsMapper : IMapper
                 DatePublished = getPublishDate(n),
                 ClusterIndex = getClusterIndex(n),
                 SourceUrl = getArticleUrl(n),
-                UniqueID = getUniqueID(n),
-                PlotType = ePlotType.Link,
                 PlotUrl = getArticleUrl(n),
+                PlotType = ePlotType.Link,
+                UniqueID = getUniqueID(n),                
                 ShortTitle = getTitle(n)
             });
     }
