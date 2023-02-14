@@ -31,9 +31,9 @@ internal class SpaceComMapper : IMapper
         return articles
             .Select(a => new FeedItem()
             {
-                SourceType = eSourceType.SpaceCom,
-                ThumbnailUrl = getThumbnailUrl(a),
                 DatePublished = getPublishDate(a),
+                ThumbnailUrl = getThumbnailUrl(a),
+                SourceType = eSourceType.SpaceCom,                
                 ShortTitle = getShortTitle(a),
                 PlotType = ePlotType.Image,
                 SourceUrl = getPlotUrl(a),
