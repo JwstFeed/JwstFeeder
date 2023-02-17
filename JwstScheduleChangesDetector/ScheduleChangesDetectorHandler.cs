@@ -113,6 +113,6 @@ public class ScheduleChangesDetectorHandler : IRunnable
 
     private string handleRetrievingScheduleException(Exception ex)
         =>
-        $"{this.processName} | Retrieving Urls | {ex.Message} | {ex.StackTrace}";
+        $"{this.processName} | {ex.Message} | {ex.StackTrace}";
     #endregion
 }
