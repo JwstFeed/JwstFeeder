@@ -1,4 +1,4 @@
-﻿using JwstScheduleChangesDetector.Model;
+using JwstScheduleChangesDetector.Model;
 
 namespace JwstScheduleChangesDetector.BL;
 
@@ -34,10 +34,10 @@ internal class ScheduleChangesDetector
 
     public bool IsScheduleChanged()
         =>
-        !(this.currentObservationsSchedule.Count == this.uptodateObsevationSchedule.Count
-        &&
-        Enumerable.SequenceEqual(this.currentObservationsSchedule,
-                                 this.uptodateObsevationSchedule,
-                                 this.comparer));
+        this.currentObservationsSchedule.Count != this.uptodateObsevationSchedule.Count
+        ||
+        !Enumerable.SequenceEqual(this.currentObservationsSchedule,
+                                  this.uptodateObsevationSchedule,
+                                  this.comparer);
     #endregion
 }
