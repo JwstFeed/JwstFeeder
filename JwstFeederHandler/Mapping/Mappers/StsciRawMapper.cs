@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using JwstFeederHandler.Extensions;
 using JwstFeederHandler.Mapping.Model;
 using JwstFeedInfrastructure.Model;
@@ -47,10 +47,10 @@ internal class StsciRawMapper : BaseRawStsciRawMapper
 
         return instrumentName switch
         {
-            "NIRSPEC" => eSourceType.StsciRawNirspec,
-            "NIRCAM" => eSourceType.StsciRawNircam,
-            "NIRISS" => eSourceType.StsciRawNiriss,
-            "MIRI" => eSourceType.StsciRawMiri,
+            string x when x.Contains("NIRSPEC") => eSourceType.StsciRawNirspec,
+            string x when x.Contains("NIRISS") => eSourceType.StsciRawNiriss,
+            string x when x.Contains("NIRCAM") => eSourceType.StsciRawNircam,
+            string x when x.Contains("MIRI") => eSourceType.StsciRawMiri,
             _ => throw new Exception("No Instrument Found")
         };
     }
