@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
@@ -290,6 +290,15 @@ public static class ExtensionMethods
         return source
             .AddHours(DateTime.UtcNow.Hour)
             .AddMinutes(DateTime.UtcNow.Minute);
+    }
+    #endregion
+        
+    #region HashSet
+    public static HashSet<T> AddRange<T>(this HashSet<T> source, HashSet<T> collectionToAdd)
+    {
+        source.UnionWith(collectionToAdd);
+
+        return source;
     }
     #endregion
 }
