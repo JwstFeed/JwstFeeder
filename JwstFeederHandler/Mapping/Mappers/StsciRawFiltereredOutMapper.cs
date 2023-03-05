@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using JwstFeederHandler.Extensions;
 using JwstFeederHandler.Mapping.Model;
 using JwstFeedInfrastructure.Model;
@@ -32,7 +32,7 @@ internal class StsciRawFiltereredOutMapper : StsciRawMapper
     #region Protected Overridden Methods
     protected override bool isRelevantImage(List<object> obj)
     {
-        bool isCalibrationImage = !base.isNotCalibrationImage(obj);
+        bool isCalibrationImage = base.isCalibrationImage(obj);
         bool isTestImage = base.isTestImage(obj);
         bool isIrrelevantFilter = base.isIrrelevantFilter(obj);
         bool isIrrelevantNrca = base.isIrrelevantNrca(obj);
