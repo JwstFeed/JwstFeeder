@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using Infrastructure.Utils;
 using JwstFeederHandler.Mapping.Model;
 using JwstFeedInfrastructure.Model;
@@ -26,7 +26,8 @@ internal abstract class BaseRawStsciRawMapper : IMapper
             "_dark",
             "shortmediumlong",
             "shortmedium",
-            "_mirifu"
+            "_mirifu",
+            "_trapsfilled"
         };
 
         this.testImageWords = new string[]
@@ -100,9 +101,9 @@ internal abstract class BaseRawStsciRawMapper : IMapper
         .ToAbsString()
         .ToComparable();
 
-    protected bool isNotCalibrationImage(List<object> obj)
+    protected bool isCalibrationImage(List<object> obj)
         =>
-        !obj[indexKeys["JpgUrl"]]
+        obj[indexKeys["JpgUrl"]]
         .ToAbsString()
         .ContainsAnyOfTheFollowing(this.irrelevantImageNameWords);
 
