@@ -32,7 +32,7 @@ internal class StsciRawMapper : BaseRawStsciRawMapper
     #region Protected Overridden Methods
     protected override bool isRelevantImage(List<object> obj)
     {
-        bool isNotCalibrationImage = base.isNotCalibrationImage(obj);
+        bool isNotCalibrationImage = !base.isCalibrationImage(obj);
         bool isTestImage = base.isTestImage(obj);
         bool isIrrelevantFilter = base.isIrrelevantFilter(obj);
         bool isIrrelevantNrca = base.isIrrelevantNrca(obj);
