@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using JwstFeederHandler.DAL;
 using JwstFeederHandler.DAL.EntityModels;
 using JwstFeederHandler.Extensions;
@@ -9,17 +9,6 @@ namespace JwstFeederHandler.BL;
 
 internal class EntityDalManager : IDalManager
 {
-    #region Data Members
-    private int defaultBatchSize { get; }
-    #endregion
-
-    #region Ctor
-    public EntityDalManager()
-    {
-        this.defaultBatchSize = 50;
-    }
-    #endregion
-
     #region Public Methods
     public IEnumerable<FeedSource> GetFeedSources()
     {
@@ -41,12 +30,14 @@ internal class EntityDalManager : IDalManager
     {
         int sourceTypeID = (int)sourceType;
         using var dbContext = new WebbDbContext();
+        HashSet<string> extraStsciRawKeys = getExtraStsciRawKeys(sourceType);
 
         return dbContext
             .FeedItems
             .Where(i => i.SourceTypeID == sourceTypeID)
             .Select(i => i.UniqueID)
-            .ToHashSet<string>();
+            .ToHashSet<string>()
+            .AddRange(extraStsciRawKeys);
     }
 
     public void InsertNewItems(IEnumerable<IFeedItem> items)
@@ -99,5 +90,40 @@ internal class EntityDalManager : IDalManager
 
         dbContext.SaveChanges();
     }
+    
+    private HashSet<string> getExtraStsciRawKeys(eSourceType sourceType)
+    {
+        using var dbContext = new WebbDbContext();
+
+        bool isStsciRaw = sourceType.ToString().ToUpper().Contains("STSCIRAW");
+        bool isFilteredOut = sourceType.ToString().ToUpper().Contains("FILTEREDOUT");
+
+        return (isStsciRaw, isFilteredOut) switch
+        {
+            (true, true) => getAllStsciRawKeysExceptFiltered(dbContext),
+            (true, false) => getFilteredStsciRawKeys(dbContext),
+            _ => new HashSet<string>()
+        };
+    }
+
+    private HashSet<string> getAllStsciRawKeysExceptFiltered(WebbDbContext dbContext)
+        =>
+        dbContext
+        .FeedItems
+        .Where(i =>
+               i.SourceTypeID == (int)eSourceType.StsciRawNirspec
+            || i.SourceTypeID == (int)eSourceType.StsciRawNircam
+            || i.SourceTypeID == (int)eSourceType.StsciRawNiriss
+            || i.SourceTypeID == (int)eSourceType.StsciRawMiri)
+        .Select(i => i.UniqueID)
+        .ToHashSet<string>();
+
+    private HashSet<string> getFilteredStsciRawKeys(WebbDbContext dbContext)
+        =>
+        dbContext
+        .FeedItems
+        .Where(i => i.SourceTypeID == (int)eSourceType.StsciRawFilteredOut)
+        .Select(i => i.UniqueID)
+        .ToHashSet<string>();
     #endregion
 }
