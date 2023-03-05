@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using Infrastructure.Utils;
 using JwstFeederHandler.Extensions;
 using JwstFeederHandler.Mapping.Model;
@@ -68,9 +68,12 @@ internal class RedditMapper : IMapper
 
     private ePlotType getPlotType(RedditItemDetails redditItem)
         =>
-        redditItem.URL.ContainsAnyOfTheFollowing(".jpg", ".png", ".gif")
-        ? ePlotType.Image
-        : (redditItem.IsVideo ? ePlotType.Video : ePlotType.Link);
+        redditItem switch
+        {
+            RedditItemDetails i when i.URL.ContainsAnyOfTheFollowing(".jpg", ".png", ".gif") => ePlotType.Image,
+            { IsVideo: true } => ePlotType.Video,
+            _ => ePlotType.Link
+        };
 
     private bool isJwstRelevant(RedditItemDetails redditItem)
         =>
