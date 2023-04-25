@@ -5,7 +5,7 @@ using JwstFeedInfrastructure.Model;
 
 namespace JwstFeederHandler.Mapping.Mappers;
 
-internal class StsciRawFiltereredOutMapper : StsciRawMapper
+internal class StsciRawFiltereredOutMapper : BaseRawStsciRawMapper
 {
     #region Public Overridden Methods
     public override IEnumerable<IFeedItem> Transform()
