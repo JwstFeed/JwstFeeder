@@ -22,11 +22,26 @@ internal class EntityDalManager : IDalManager
         return urls;
     }
 
-    public void InsertNewSchedule(IEnumerable<Observation> observations)
+    public void InsertNewSchedule(IEnumerable<IObservation> observations)
     {
+        IEnumerable<Observation> entityObservations = observations
+            .Select(o => new Observation()
+            {
+                ScienceInstumentAndMode = o.ScienceInstumentAndMode,
+                ScheduledStartTime = o.ScheduledStartTime,
+                ClusterIndex = o.ClusterIndex,
+                TargetName = o.TargetName,
+                VisitType = o.VisitType,
+                KeyWords = o.KeyWords,
+                Category = o.Category,
+                Duration = o.Duration,
+                VisitID = o.VisitID,
+                PcsMode = o.PcsMode
+            });
+
         this.dbContext
             .Observations
-            .AddRange(observations);
+            .AddRange(entityObservations);
 
         this.dbContext
             .SaveChanges();
