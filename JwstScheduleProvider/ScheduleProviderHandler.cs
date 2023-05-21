@@ -1,4 +1,4 @@
-﻿using Infrastructure.Extensions;
+using Infrastructure.Extensions;
 using Infrastructure.Logs;
 using Infrastructure.Model;
 using JwstScheduleProvider.BL;
@@ -47,7 +47,7 @@ public class ScheduleProviderHandler : IRunnable
         =>
         ((Action)(() =>
         {
-            IEnumerable<Observation> observationSchedule = getObservationSchedule(url);
+            IEnumerable<IObservation> observationSchedule = getObservationSchedule(url);
             insertNewSchedule(observationSchedule);
             markUrlAsDone(url);
         }))
@@ -69,7 +69,7 @@ public class ScheduleProviderHandler : IRunnable
         this.dalManager
         .GetUrls();
 
-    private void insertNewSchedule(IEnumerable<Observation> observations)
+    private void insertNewSchedule(IEnumerable<IObservation> observations)
         =>
         this.dalManager
         .InsertNewSchedule(observations);
@@ -79,7 +79,7 @@ public class ScheduleProviderHandler : IRunnable
         this.dalManager
         .MarkUrlAsDone(url);
 
-    private IEnumerable<Observation> getObservationSchedule(string url)
+    private IEnumerable<IObservation> getObservationSchedule(string url)
         =>
         new UrlProcessor()
         .GetObservationSchedule(url);
