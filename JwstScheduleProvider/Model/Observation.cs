@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace JwstScheduleProvider.Model;
 
-internal class Observation
+internal class Observation : IObservation
 {
     [Key]
     public string ClusterIndex { get; set; }
