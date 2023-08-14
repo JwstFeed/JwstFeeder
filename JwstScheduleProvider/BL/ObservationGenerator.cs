@@ -20,7 +20,7 @@ internal class ObservationGenerator
             { "VisitType", 2 },
             { "ScheduledStartTime", 3 },
             { "Duration", 4 },
-            { "ScienceInstumentAndMode", 5 },
+            { "ScienceInstrumentAndMode", 5 },
             { "TargetName", 6 },
             { "Category", 7 },
             { "KeyWords", 8 },
@@ -33,7 +33,7 @@ internal class ObservationGenerator
         =>
         new MultiObjectObservation()
         {
-            ScienceInstumentAndMode = observationRow[keys["ScienceInstumentAndMode"]],
+            ScienceInstrumentAndMode = observationRow[keys["ScienceInstrumentAndMode"]],
             ScheduledStartTime = getScheduledStartTime(observationRow),
             TargetName = observationRow[keys["TargetName"]],
             ClusterIndex = getClusterIndex(observationRow),
@@ -47,7 +47,7 @@ internal class ObservationGenerator
         =>
         new Observation()
         {
-            ScienceInstumentAndMode = observationRow[keys["ScienceInstumentAndMode"]],
+            ScienceInstrumentAndMode = observationRow[keys["ScienceInstrumentAndMode"]],
             ScheduledStartTime = getScheduledStartTime(observationRow),
             TargetName = observationRow[keys["TargetName"]],
             ClusterIndex = getClusterIndex(observationRow),
@@ -63,7 +63,7 @@ internal class ObservationGenerator
         =>
         new RealTimeCommandObservation()
         {
-            ScienceInstumentAndMode = observationRow[keys["ScienceInstumentAndMode"]],
+            ScienceInstrumentAndMode = observationRow[keys["ScienceInstrumentAndMode"]],
             ScheduledStartTime = getScheduledStartTime(observationRow),
             ClusterIndex = getClusterIndex(observationRow),
             VisitType = observationRow[keys["VisitType"]],
