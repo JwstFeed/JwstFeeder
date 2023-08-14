@@ -14,7 +14,7 @@ internal class EmptyObservation : IObservation
 
     public string Duration => string.Empty;
 
-    public string ScienceInstumentAndMode => string.Empty;
+    public string ScienceInstrumentAndMode => string.Empty;
 
     public string TargetName => string.Empty;
 
