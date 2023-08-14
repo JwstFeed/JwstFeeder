@@ -47,10 +47,10 @@ internal class StsciRawMapper : BaseRawStsciRawMapper
 
         return instrumentName switch
         {
-            string x when x.Contains("NIRSPEC") => eSourceType.StsciRawNirspec,
-            string x when x.Contains("NIRISS") => eSourceType.StsciRawNiriss,
-            string x when x.Contains("NIRCAM") => eSourceType.StsciRawNircam,
-            string x when x.Contains("MIRI") => eSourceType.StsciRawMiri,
+            not null when x.Contains("NIRSPEC") => eSourceType.StsciRawNirspec,
+            not null when x.Contains("NIRISS") => eSourceType.StsciRawNiriss,
+            not null when x.Contains("NIRCAM") => eSourceType.StsciRawNircam,
+            not null when x.Contains("MIRI") => eSourceType.StsciRawMiri,
             _ => throw new Exception("No Instrument Found")
         };
     }
