@@ -14,7 +14,7 @@ internal interface IObservation
 
     string Duration { get; }
 
-    string ScienceInstumentAndMode { get; }
+    string ScienceInstrumentAndMode { get; }
 
     string TargetName { get; }
 
