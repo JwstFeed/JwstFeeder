@@ -56,7 +56,7 @@ public static class ExtensionMethods
         int pFrom = source.IndexOf(str1) + str1.Length;
         int pTo = source.LastIndexOf(str2);
 
-        return source.Substring(pFrom, pTo - pFrom);
+        return source[pFrom..pTo];
     }
 
     public static int ToInt(this string source)
@@ -161,12 +161,11 @@ public static class ExtensionMethods
         return WebUtility.HtmlDecode(source);
     }
 
-    public static string DeleteFirstLines(this string source, int numerOfRows)
+    public static string DeleteFirstLines(this string source, int numberOfRows)
     {
         return source
             .Split(Environment.NewLine.ToCharArray())
-            .Skip(numerOfRows)
-            .ToArray()
+            .Skip(numberOfRows)
             .JoinString(Environment.NewLine);
     }
 
