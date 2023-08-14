@@ -52,7 +52,7 @@ internal class TwitterMapper : IMapper
                 ThumbnailUrl = getPlotUrl(t),
                 SourceType = getSourceType(),                
                 SourceUrl = getSourceUrl(t),                
-                PlotType = getPlotType(t),
+                PlotType = getPlotType(),
                 PlotUrl = getPlotUrl(t),
                 UniqueID = t.Id
             })
@@ -119,7 +119,7 @@ internal class TwitterMapper : IMapper
         tweet.Attachments != null
         && (tweet.Attachments?.Media?.Any() ?? false);
 
-    private ePlotType getPlotType(Tweet tweet)
+    private ePlotType getPlotType()
         =>
         ePlotType.Image;
 
