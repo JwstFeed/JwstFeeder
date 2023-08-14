@@ -13,7 +13,7 @@ internal static class ExtensionMethods
 
     public static string[] ToScheduleTableRow(this string source)
     {
-        string delimiter = "#unique#";
+        const string delimiter = "#unique#";
 
         return source
             .Replace("  ", delimiter)
