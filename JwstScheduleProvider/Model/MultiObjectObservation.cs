@@ -18,7 +18,7 @@ internal class MultiObjectObservation : IObservation
 
     public string TargetName { get; set; }
 
-    public string Category => this.ScienceInstumentAndMode;
+    public string Category => this.ScienceInstrumentAndMode;
 
-    public string KeyWords => this.ScienceInstumentAndMode;
+    public string KeyWords => this.ScienceInstrumentAndMode;
 }
