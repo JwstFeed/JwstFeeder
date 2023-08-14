@@ -17,7 +17,7 @@ internal class Observation : IObservation
 
     public string Duration { get; set; }
 
-    public string ScienceInstumentAndMode { get; set; }
+    public string ScienceInstrumentAndMode { get; set; }
 
     public string TargetName { get; set; }
 
